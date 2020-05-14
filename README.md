@@ -9,19 +9,22 @@ pip install confuse_jinja
 
 ## Usage
 
-```python
-import confuse_jinja
-confuse_jinja.enable()
-# now you can use jinja2 templates inside your keys
+```yaml
+# config.yml
+asdf:
+  blah: asdf{{ C.other.thing }}
+nested: '{{ C.asdf }}' # need to quote if you start with a '{'
+other:
+  thing: 456
+```
 
-config = confuse.Configuration('asdf', read=False)
-config.set({
-    'asdf': {
-        'blah': 'asdf{{ C.other.thing }}'
-    },
-    'nested': '{{ C.asdf }}',
-    'other': {'thing': 456}
-})
+```python
+import confuse
+import confuse_jinja
+confuse_jinja.enable() # now you can use jinja2 templates inside your keys
+
+config = confuse.Configuration('asdf')
+config.set(confuse.load_yaml('config.yml'))
 
 assert config['asdf']['blah'].get() == 'asdf456'
 assert config['nested'].get() == {'blah': 'asdf456'}

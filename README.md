@@ -4,7 +4,7 @@ Simple Ansible-style variable parsing for Confuse config files using Jinja2.
 ## Install
 
 ```bash
-pip install confuse_jinja
+pip install confuse-jinja
 ```
 
 ## Usage

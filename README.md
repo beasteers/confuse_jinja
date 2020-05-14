@@ -21,7 +21,7 @@ other:
 ```python
 import confuse
 import confuse_jinja
-confuse_jinja.enable() # now you can use jinja2 templates inside your keys
+confuse_jinja.enable() # now you can use jinja2 templates inside your config values
 
 config = confuse.Configuration('asdf')
 config.set(confuse.load_yaml('config.yml'))

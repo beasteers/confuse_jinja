@@ -1,0 +1,7 @@
+asdf:
+    blah: asdf{{ C.other.thing }}
+
+nested: '{{ C.asdf }}'
+
+other:
+    thing: 4
